@@ -1,6 +1,6 @@
 module Usable 
     def build_parent
-        self.build_music(music_type: self.class.to_s.to_sym) unless music_id
+        self.build_medium(media_type: self.class.to_s) unless medium_id
         if self.instance_of?(Song)
           self.build_album unless album_id
           self.album.build_artist unless album.artist_id
