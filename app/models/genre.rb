@@ -1,4 +1,5 @@
 class Genre < ApplicationRecord
-    belongs_to :medium 
+    include Usable
+    belongs_to :music 
     before_validation :build_parent
 end

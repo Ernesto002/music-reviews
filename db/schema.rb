@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_04_25_035333) do
     t.index ["music_id"], name: "index_genres_on_music_id"
   end
 
-  create_table "music", force: :cascade do |t|
+  create_table "musics", force: :cascade do |t|
     t.string "music_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
