@@ -14,44 +14,50 @@ ActiveRecord::Schema.define(version: 2021_04_25_035333) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
-    t.integer "music_id"
+    t.integer "medium_id"
+    t.integer "artist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["music_id"], name: "index_albums_on_music_id"
+    t.index ["artist_id"], name: "index_albums_on_artist_id"
+    t.index ["medium_id"], name: "index_albums_on_medium_id"
   end
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
-    t.integer "music_id"
+    t.integer "medium_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["music_id"], name: "index_artists_on_music_id"
+    t.index ["medium_id"], name: "index_artists_on_medium_id"
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.integer "music_id"
+    t.integer "medium_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["music_id"], name: "index_genres_on_music_id"
+    t.index ["medium_id"], name: "index_genres_on_medium_id"
   end
 
-  create_table "musics", force: :cascade do |t|
-    t.string "music_type"
+  create_table "media", force: :cascade do |t|
+    t.string "medium_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "songs", force: :cascade do |t|
     t.string "title"
-    t.integer "music_id"
+    t.integer "medium_id"
+    t.integer "album_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["music_id"], name: "index_songs_on_music_id"
+    t.index ["album_id"], name: "index_songs_on_album_id"
+    t.index ["medium_id"], name: "index_songs_on_medium_id"
   end
 
-  add_foreign_key "albums", "musics"
-  add_foreign_key "artists", "musics"
-  add_foreign_key "genres", "musics"
-  add_foreign_key "songs", "musics"
+  add_foreign_key "albums", "artists"
+  add_foreign_key "albums", "media"
+  add_foreign_key "artists", "media"
+  add_foreign_key "genres", "media"
+  add_foreign_key "songs", "albums"
+  add_foreign_key "songs", "media"
 end
