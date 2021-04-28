@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2021_04_28_055856) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.boolean "favorited"
     t.integer "user_id", null: false
     t.integer "medium_id", null: false
     t.datetime "created_at", precision: 6, null: false
