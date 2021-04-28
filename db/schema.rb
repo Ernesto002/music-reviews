@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_035333) do
+ActiveRecord::Schema.define(version: 2021_04_28_055856) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 2021_04_25_035333) do
     t.index ["medium_id"], name: "index_artists_on_medium_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.boolean "favorited"
+    t.integer "user_id", null: false
+    t.integer "medium_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["medium_id"], name: "index_favorites_on_medium_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.integer "medium_id"
@@ -44,6 +54,17 @@ ActiveRecord::Schema.define(version: 2021_04_25_035333) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.string "rating"
+    t.integer "user_id", null: false
+    t.integer "medium_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["medium_id"], name: "index_reviews_on_medium_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "songs", force: :cascade do |t|
     t.string "title"
     t.integer "medium_id"
@@ -54,10 +75,22 @@ ActiveRecord::Schema.define(version: 2021_04_25_035333) do
     t.index ["medium_id"], name: "index_songs_on_medium_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "albums", "artists"
   add_foreign_key "albums", "media"
   add_foreign_key "artists", "media"
+  add_foreign_key "favorites", "media"
+  add_foreign_key "favorites", "users"
   add_foreign_key "genres", "media"
+  add_foreign_key "reviews", "media"
+  add_foreign_key "reviews", "users"
   add_foreign_key "songs", "albums"
   add_foreign_key "songs", "media"
 end
