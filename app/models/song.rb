@@ -1,6 +1,6 @@
 class Song < ApplicationRecord
     include Usable
-    belongs_to :media
+    include Reviewable, Favoritable
     belongs_to :album                                   
     before_validation :build_parent
     validates :title, presence: true

@@ -1,8 +1,4 @@
 class Medium < ApplicationRecord
-  has_one :genre
-  has_one :artist
-  has_one :album
-  has_one :song
   has_many :reviews
   has_many :reviewers, through: :reviews, source: :reviewer
   has_many :favorites

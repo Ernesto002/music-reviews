@@ -1,6 +1,6 @@
 class Artist < ApplicationRecord
     include Usable
-    belongs_to :media 
+    include Reviewable, Favoritable
     has_many :albums 
     has_many :songs, through: :albums
     before_validation :build_parent
