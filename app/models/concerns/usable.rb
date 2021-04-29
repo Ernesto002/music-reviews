@@ -6,13 +6,11 @@ module Usable
   end
 
  def build_parent
-    self.build_medium(medium_type: self.class.to_s) unless medium_id
-    if self.instance_of?(Song)
-      self.build_album unless album_id
-      self.album.build_artist unless album.artist_id
+    build_medium(medium_type: self.class.to_s) unless medium_id
+    if instance_of?(Song)
+      build_album unless album_id
+      album.build_artist unless album.artist_id
     end
-    if self.instance_of?(Album)
-      self.build_artist unless artist_id
-    end
+    build_artist if instance_of?(Album) && !artist_id
  end
 end
