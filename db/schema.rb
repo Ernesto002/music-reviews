@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_28_055856) do
+ActiveRecord::Schema.define(version: 2021_05_01_064110) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
@@ -80,6 +80,9 @@ ActiveRecord::Schema.define(version: 2021_04_28_055856) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "uid_twitter"
+    t.integer "uid_facebook"
+    t.integer "uid_google_oauth2"
   end
 
   add_foreign_key "albums", "artists"
