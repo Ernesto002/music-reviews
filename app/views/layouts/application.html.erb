@@ -6,10 +6,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <% if logged_in? %>
+      <%= form_tag '/logout' do |f| %>
+        <%= submit_tag 'Log Out!' %>
+      <% end %>
+      <%= link_to 'Your Profile', user_path(current_user) %>
+    <% else %>
+      <%= link_to 'Log In', login_path %> |
+      <%= link_to 'Sign Up', signup_path %>
+    <% end %> 
     <%= yield %>
   </body>
 </html>
