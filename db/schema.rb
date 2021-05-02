@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_01_064110) do
+ActiveRecord::Schema.define(version: 2021_05_02_033206) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2021_05_01_064110) do
     t.index ["medium_id"], name: "index_genres_on_medium_id"
   end
 
+  create_table "identities", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_identities_on_user_id"
+  end
+
   create_table "media", force: :cascade do |t|
     t.string "medium_type"
     t.datetime "created_at", precision: 6, null: false
@@ -80,9 +89,6 @@ ActiveRecord::Schema.define(version: 2021_05_01_064110) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "uid_twitter"
-    t.integer "uid_facebook"
-    t.integer "uid_google_oauth2"
   end
 
   add_foreign_key "albums", "artists"
@@ -91,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_05_01_064110) do
   add_foreign_key "favorites", "media"
   add_foreign_key "favorites", "users"
   add_foreign_key "genres", "media"
+  add_foreign_key "identities", "users"
   add_foreign_key "reviews", "media"
   add_foreign_key "reviews", "users"
   add_foreign_key "songs", "albums"
