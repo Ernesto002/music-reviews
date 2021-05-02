@@ -6,17 +6,33 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(username: params[:user][:username])
     if user && user.authenticate(params[:user][:password])
-      session[:user_id] = user.id
+      self.current_user = user
       return redirect_to user_path(user)
     end
     redirect_to login_path, notice: 'Invalid login attempt'
   end
 
   def omni_create
-    uid_type = "uid_#{auth[:provider].to_s}".to_sym
-    user = User.find_by(uid_type auth[:uid])
-    session[:user_id] = user.id
-    return redirect_to user_path(user)
+    identity = Identity.find_or_create_with_omniauth(auth)
+    if logged_in?
+      if identity.user == current_user 
+        redirect_to root_path, notice: 'Identity already exists.'
+      # elsif identity.user 
+        # notice to merge accounts
+      else
+        indentity.user = current_user
+        identity.save 
+        redirect_to root_path, notice: 'Identity linked!'
+      end
+    else
+      if identity.user
+        self.current_user = identity.user 
+      else 
+        user = User.create_with_omni(auth, identity)
+        self.current_user = user
+      end
+      redirect_to user_path(user), notice: 'Signed in!'
+    end
   end
 
   def destroy
