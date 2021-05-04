@@ -7,4 +7,8 @@ class Album < ApplicationRecord
     before_validation :build_parent
     validates :artist, presence: true
     validates :title, presence: true
+
+    def title 
+        "#{artist.name} - Album #{title}"
+    end
 end
