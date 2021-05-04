@@ -3,14 +3,13 @@ Rails.application.routes.draw do
 
   #users
   get '/signup' => 'users#new'
-  post '/signup' => 'users#create'
 
-  resources :users, only: %i[show update] do 
+  resources :users, only: %i[show update create] do 
     resources :reviews, only: %i[index]
     resources :favorites, only: %i[index]
   end
-  resources :reviews, only: %i[destroy create edit update]
-  resources :views, only: %i[destroy create]
+  resources :reviews, only: %i[destroy create edit update destroy]
+  resources :views, only: %i[create destroy]
 
   #media
   resources :media, only: %i[index show]
@@ -20,13 +19,13 @@ Rails.application.routes.draw do
       resources :songs, only: %i[index]
     end
   end
-  resources :albums, only: %i[show create new]
-  resources :songs, only: %i[show create new]
+  resources :albums, only: %i[new create show]
+  resources :songs, only: %i[new create show]
 
   #sessions  
   get '/login/' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  post '/logout' => 'sessions#destroy'
+  post '/logout/' => 'sessions#destroy'
+  resources :sessions, only: %i[create]
 
   #omniauth
   get '/auth/:provider/callback' => 'sessions#omni_create'

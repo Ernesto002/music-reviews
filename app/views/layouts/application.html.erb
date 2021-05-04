@@ -10,14 +10,15 @@
 
   <body>
     <% if logged_in? %>
-      <%= form_tag '/logout' do |f| %>
+      <%= form_tag logout_path do |f| %>
         <%= submit_tag 'Log Out!' %>
       <% end %>
       <%= link_to 'Your Profile', user_path(current_user) %>
     <% else %>
       <%= link_to 'Log In', login_path %> |
       <%= link_to 'Sign Up', signup_path %>
-    <% end %> 
+    <% end %>
+    <p>Current User: <%= current_user&.username %></p>
     <%= yield %>
   </body>
 </html>
