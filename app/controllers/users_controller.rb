@@ -5,6 +5,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_back unless @user 
+  end
+
+  def update 
+    return redirect_to root_path, notice: 'You must be logged in as the correct user' inless current_user == @user
   end
 
   def create
