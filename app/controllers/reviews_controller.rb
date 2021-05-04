@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
         review = Review.new(review_params)
         review.medium = Medium.find(params[:medium_id])
         review.save 
+        Favorite.create(favoriter: review.user, medium: review.medium)
         redirect_to medium_path(review.medium)
     end
 
