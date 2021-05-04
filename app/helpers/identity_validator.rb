@@ -5,11 +5,13 @@ class IdentityValidator < ActiveModel::Validator
                 record.errors[:base] << 'This user must have at least one username, email, or social link'
             end
             record.errors[:base] << 'Users must have a password' if record.password_digest.blank?
-            record = enforce_unique(record)
         end
+        record = enforce_unique(record)
     end
 
     def enforce_unique(record)
+        username_id = User.find_by(username: record.username)&.id
+        email_id = User.find_by(email: record.email)&.id
         record.errors[:username] << 'Username is taken' if record.username && User.exists?(username: record.username)
         record.errors[:email] << 'Email is taken' if record.email && User.exists?(email: record.email)
         record

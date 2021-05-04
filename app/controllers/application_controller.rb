@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?
+    helper_method :current_user, :logged_in?, :set_user
 
     def current_user 
         @current_user ||= User.find_by(id: session[:user_id])
@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     def current_user=(user)
         session[:user_id] = user&.id
         @current_user = user
+    end
+
+    def set_user
+        @user = User.find_by(id: params[:id])
     end
 
     def logged_in?
