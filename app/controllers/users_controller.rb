@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :require_login, only: %i[update]
   before_action :set_user, only: %i[show update]
+
   def new
+    return redirect_to user_path(current_user) if current_user
     @user = User.new
   end
 

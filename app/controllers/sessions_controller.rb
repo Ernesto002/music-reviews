@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    return redirect_to user_path(current_user) if logged_in?
     user = User.find_by(username: params[:user][:username])
     if user && user.authenticate(params[:user][:password])
       self.current_user = user
