@@ -2,7 +2,7 @@
 
 <% unless @reviews.empty? %> 
     <% @reviews.each do |review| %>
-        <h4><%= link_to review.medium.element.title, medium_path(review.medium) %></h4>
+        <h4><%= link_to review.medium.element.title, medium_path(review.medium) %> - <%= review.rating %>/5</h4>
         <p><%= review.content %></p> 
         <% if @user == current_user %>
             <div class='current_user_actions_review_<%= review.id %>'>

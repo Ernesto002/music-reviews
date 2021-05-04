@@ -1,6 +1,4 @@
 <h1>Sign Up!</h1>
-<ul id="errors">
-  <%= notice %>
-</ul>
 
+<%= render 'notice' %>
 <%= render 'form', url: signup_path, user: @user %>

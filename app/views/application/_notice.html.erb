@@ -1,0 +1,7 @@
+<% if notice %>
+    <ul id="notice">
+        <% notice.keys.each do |key| %>
+            <li><%= "#{key}: #{notice[key][0]}" %></li>
+        <% end %>
+    </ul>
+<% end %>
