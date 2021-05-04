@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static#home'
+  root 'media#index'
 
   #users
   get '/signup' => 'users#new'
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :views, only: %i[create destroy]
 
   #media
-  resources :media, only: %i[index show]
+  resources :media, only: %i[show]
   resources :genres, only: %i[index new create show]
   resources :artists, only: %i[index new create show] do 
     resources :albums, only: %i[index] do 
