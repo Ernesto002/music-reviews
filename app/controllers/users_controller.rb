@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :require_login, only: %i[update]
-  before_action :set_user, only: %i[show update]
+  before_action only: %i[show update] do 
+    set_user(params[:id])
+  end
 
   def new
     return redirect_to user_path(current_user) if current_user

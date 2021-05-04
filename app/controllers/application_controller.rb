@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
         @current_user = user
     end
 
-    def set_user
-        @user = User.find_by(id: params[:id])
+    def set_user(id = params[:user_id])
+        @user = User.find_by(id: id)
     end
 
     def logged_in?
