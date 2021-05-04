@@ -4,6 +4,6 @@
     <%= render 'form', url: user_path(@user)
 <% end %>
 <ul>
-    <li><%= "Id: #{@user.attributes['id']}" %></li>
-    <li><%= "Email: #{@user.attributes['email']}" %></li>
+    <li><%= link_to "User Reviews", user_reviews_path(@user) %></li>
+    <li><%= link_to "User Favorites", user_favorites_path(@user) %></li>
 </ul>
