@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     def logged_in?
         !!current_user
     end
+
+    def require_login 
+        return head(:forbidden) unless current_user
+    end
 end
