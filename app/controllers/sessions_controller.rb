@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(username: params[:user][:username])
-    if user && user.authenticate(params[:user][:password])
+    if user&.authenticate(params[:user][:password])
       self.current_user = user
       return redirect_to user_path(user)
     end

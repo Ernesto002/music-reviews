@@ -15,7 +15,7 @@ class MediaController < ApplicationController
         when 'song'
             redirect_to song_path(@medium.element)
         else
-            redirect_back fallback_location: root_path, notice: 'Something has gone wrong'
+            redirect_back(fallback_location: root_path), notice: 'Something has gone wrong'
         end
     end
 

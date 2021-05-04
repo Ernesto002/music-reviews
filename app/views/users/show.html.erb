@@ -1,7 +1,8 @@
 <h1><%= "#{@user.attributes['username']}" %></h1>
 
 <% if current_user == @user %>
-    <%= render 'form', url: user_path(@user)
+    <%= render 'form', url: user_path(@user), user: @user %>
+    <p>Link your socials!</p>
 <% end %>
 <ul>
     <li><%= link_to "User Reviews", user_reviews_path(@user) %></li>
