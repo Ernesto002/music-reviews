@@ -5,5 +5,6 @@ class Album < ApplicationRecord
     belongs_to :artist
     has_many :songs
     before_validation :build_parent
+    validates :artist, presence: true
     validates :title, presence: true
 end

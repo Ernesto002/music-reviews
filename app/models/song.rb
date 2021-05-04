@@ -4,5 +4,6 @@ class Song < ApplicationRecord
     include Favoritable
     belongs_to :album                                   
     before_validation :build_parent
+    validates :album, presence:true
     validates :title, presence: true
 end

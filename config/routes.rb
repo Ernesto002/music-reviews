@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :views, only: %i[destroy create]
 
   #media
-  resources :media, only: %i[index]
+  resources :media, only: %i[index show]
   resources :genres, only: %i[index new create show]
   resources :artists, only: %i[index new create show] do 
     resources :albums, only: %i[index] do 
