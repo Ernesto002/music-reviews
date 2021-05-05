@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
         review.reviewer = current_user
         review.save 
         Favorite.create(favoriter: review.reviewer, medium: review.medium)
-        return redirect_back(fallback_location: medium_path(review.medium)), notice: unless @review.errors unless @review.errors.blank
+        return redirect_back(fallback_location: medium_path(review.medium)), notice: unless review.errors unless review.errors.blank
         redirect_to medium_path(review.medium)
     end
 
@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
     private 
 
     def review_params
-        params.require(:review).permit(:content, :rating)
+        params.require(:review).permit(:content, :rating, :medium_id, :user_id)
     end
 
     def require_owner 
