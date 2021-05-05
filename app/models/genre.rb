@@ -3,5 +3,6 @@ class Genre < ApplicationRecord
     include Reviewable
     include Favoritable
     before_validation :build_parent
+    validates :medium_id, presence: true, uniqueness: true
     validates :title, presence: true
 end

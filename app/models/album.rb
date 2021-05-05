@@ -5,7 +5,8 @@ class Album < ApplicationRecord
     belongs_to :artist
     has_many :songs
     before_validation :build_parent
-    validates :artist, presence: true
+    validates :medium_id, presence: true, uniqueness: true
+    validates :artist_id, presence: true
     validates :title, presence: true
     scope :in_artist, ->(artist_id) { where(artist_id: artist_id) }
 
