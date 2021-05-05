@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
 
   def create
     album = Album.new(album_params)
-    artist = Artist.find_by(params[:album][:artist_id])
+    artist = Artist.find_by(id: params[:album][:artist_id])
     album.artist = artist
     album.save
     return redirect_back(fallback_location: new_artist_album_path(params[:album][:artist_id])), notice: album.errors unless album.errors.blank?

@@ -4,7 +4,7 @@ class User < ApplicationRecord
     has_many :reviewed_media, through: :reviews, source: :medium
     has_many :favorites
     has_many :favorited_media, through: :favorites, source: :medium
-    has_secure_password :validations false
+    has_secure_password validations: false
     validates_with IdentityValidator 
 
     def self.create_with_omni(auth, identity)
