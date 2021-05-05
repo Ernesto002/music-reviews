@@ -1,8 +1,5 @@
 class SongsController < ApplicationController
   before_action :set_song, only: %i[show]
-  def index
-    @songs = Song.in_album(params[:album_id])
-  end
 
   def new
   end

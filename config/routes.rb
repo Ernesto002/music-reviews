@@ -28,11 +28,7 @@ Rails.application.routes.draw do
   #media
   resources :media, only: %i[show]
   resources :genres, only: %i[index new create show]
-  resources :artists, only: %i[index new create show] do 
-    resources :albums, only: %i[index] do 
-      resources :songs, only: %i[index]
-    end
-  end
+  resources :artist, only: %i[index new create show]
   resources :albums, only: %i[new create show]
   resources :songs, only: %i[new create show]
 
@@ -43,5 +39,8 @@ Rails.application.routes.draw do
 
   #omniauth
   get '/auth/:provider/callback' => 'sessions#omni_create'
+
+  #fallback
+  get '*path' => redirect('/')
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

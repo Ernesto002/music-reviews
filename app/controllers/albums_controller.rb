@@ -1,8 +1,5 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: %i[show]
-  def index
-    @albums = Album.in_artist(params[:artist_id])
-  end
 
   def new
   end
