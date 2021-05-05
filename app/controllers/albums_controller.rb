@@ -7,7 +7,10 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    album = Album.create(album_params)
+    album = Album.new(album_params)
+    artist = Artist.find_by(params[:album][:artist_id])
+    album.artist = artist
+    album.save
     return redirect_back(fallback_location: new_artist_album_path(params[:album][:artist_id])), notice: album.errors unless album.errors.blank?
     redirect_to album_path(album)
   end
@@ -18,7 +21,7 @@ class AlbumsController < ApplicationController
   private 
 
   def album_params
-    params.require(:album).permit(:title, :artist_id, songs_attributes: [:title])
+    params.require(:album).permit(:title, songs_attributes: [:title])
   end
 
   def set_album 

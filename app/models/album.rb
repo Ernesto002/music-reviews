@@ -9,7 +9,7 @@ class Album < ApplicationRecord
     validates :medium, presence: true, uniqueness: true
     validates :artist, presence: true
     validates :title, presence: true
-    validates_uniqueness_of :title, scope: :artist_id
+    validates_uniqueness_of :title, scope: :artist
     scope :in_artist, ->(artist_id) { where(artist_id: artist_id) }
 
     def title 

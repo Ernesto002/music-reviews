@@ -5,9 +5,12 @@ class SongsController < ApplicationController
   end
 
   def create
+    song = Song.new(song_params)
+    album = Album.find_by(id: params[:song][:album_id])
+    song.album = album
+    song.save
     unless song.errors.blank?
-      album = Album.find_by(id: params[:song][:album_id])
-      return redirect_back(fallback_location: new_artist_album_song_path(artist_id: album.parent.id, album_id: album.id)), notice: song.errors
+      return redirect_back(fallback_location: album_path(params[:song][:album_id])), notice: song.errors
     end
   end
 
@@ -17,7 +20,7 @@ class SongsController < ApplicationController
   private 
 
   def song_params 
-    params.require(:song).permit(:title, :album_id)
+    params.require(:song).permit(:title)
   end
 
   def set_song 
