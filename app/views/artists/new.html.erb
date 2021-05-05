@@ -1,7 +1,7 @@
-<h1>Add a Album!</h1>
+<h1>Add a Artist!</h1>
 <%= render 'notice' %>
 <%= form_for Artist.new do |f| %>
-    <%= f.label :title, 'Title:' %><br>
-    <%= f.text_field :title %><br>
+    <%= f.label :name, 'Name:' %><br>
+    <%= f.text_field :Name %><br>
     <%= f.submit %>
 <% end %>
