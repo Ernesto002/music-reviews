@@ -1,0 +1,18 @@
+<h1><%= medium.title %></h1>
+<% unless medium.reviews.empty? %>
+    <% medium.reviews.each do |review| %>
+        <p><%= review.content %> by <%= link_to review.reviewer.username, user_path(review.reviewer) %></p>
+        <%= render 'reviews/owner_actions', review: review %>
+        <hr>
+    <% end %>
+<% else %>
+    <p><%= medium.title %> has no reviews!</p>
+<% end %>
+
+<% if logged_in? %>
+    <h4>Add a review!</h4>
+    <%= render 'notice' %>
+    <%= render 'reviews/form', review: Review.new, medium_id: medium.medium_id %>
+<% else %>
+    <p>Log in to add a review!</p>
+<% end %>
