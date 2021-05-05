@@ -1,2 +1,7 @@
-<h1>Genres#new</h1>
-<p>Find me in app/views/genres/new.html.erb</p>
+<h1>Add a Genre!</h1>
+<%= render 'notice' %>
+<%= form_for Genre.new do |f| %>
+    <%= f.label :title, 'Title:' %><br>
+    <%= f.text_field :title %><br>
+    <%= f.submit %>
+<% end %>
