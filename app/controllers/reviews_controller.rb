@@ -15,7 +15,8 @@ class ReviewsController < ApplicationController
         review.medium = Medium.find(params[:medium_id])
         review.reviewer = current_user
         review.save 
-        Favorite.create(favoriter: review.user, medium: review.medium)
+        Favorite.create(favoriter: review.reviewer, medium: review.medium)
+        return redirect_back(fallback_location: medium_path(review.medium)), notice: unless @review.errors unless @review.errors.blank
         redirect_to medium_path(review.medium)
     end
 

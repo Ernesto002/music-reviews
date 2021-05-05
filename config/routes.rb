@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'genres/index'
+  get 'genres/new'
+  get 'genres/show'
   root 'media#index'
 
   #users
