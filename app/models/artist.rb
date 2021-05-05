@@ -5,7 +5,7 @@ class Artist < ApplicationRecord
     has_many :albums 
     has_many :songs, through: :albums
     before_validation :build_parent
-    validates :medium_id, presence: true, uniqueness: true
+    validates :medium, presence: true, uniqueness: true
     validates :name, presence: true
 
     def children 
