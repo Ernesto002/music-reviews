@@ -1,2 +1,7 @@
-<h1>Songs#new</h1>
-<p>Find me in app/views/songs/new.html.erb</p>
+<h1>Add a Song!</h1>
+<%= render 'notice' %>
+<%= form_for Song.new do |f| %>
+    <%= f.hidden_field :album_id, value: params[:album_id] %><br>
+    <%= f.label :title, 'Title:' %><br>
+    <%= f.submit %>
+<% end %>
