@@ -5,11 +5,10 @@ class GenresController < ApplicationController
   end
 
   def new
-    @genre = Genre.new
   end
 
   def create 
-    genre = Genre.new(genre_params)
+    genre = Genre.create(genre_params)
     return redirect_back(fallback_location: new_genre_path), notice: genre.errors unless genre.errors.blank?
     redirect_to genre_path(genre)
   end
