@@ -1,0 +1,8 @@
+<% if medium.try(:children) %>
+    <h4><%= medium.children.first.class.to_s.pluralize %>:</h4>
+    <% medium.children.each do |child| %>
+        <div class='medium_child_<%= child.id %>'>
+            <%= link_to child.title, medium_path(child.medium_id)
+        </div>
+    <% end %>
+<% end %>

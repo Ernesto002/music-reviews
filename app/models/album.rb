@@ -10,6 +10,10 @@ class Album < ApplicationRecord
     scope :in_artist, ->(artist_id) { where(artist_id: artist_id) }
 
     def title 
-        "#{artist.name} - Album #{title}"
+        "#{artist.name} - Album #{title}" if artist
+    end
+
+    def children 
+        songs.blank? ? nil : songs
     end
 end

@@ -9,6 +9,8 @@
     <p><%= medium.title %> has no reviews!</p>
 <% end %>
 
+<%= render 'media/children', medium: medium %>
+
 <% if logged_in? %>
     <h4>Add a review!</h4>
     <%= render 'notice' %>
