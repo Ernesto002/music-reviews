@@ -2,6 +2,8 @@ class AlbumsController < ApplicationController
   before_action :set_album, only: %i[show]
 
   def new
+    @album = Album.new
+    @album.songs.build
   end
 
   def create
@@ -16,7 +18,7 @@ class AlbumsController < ApplicationController
   private 
 
   def album_params
-    params.require(:album).permit(:title, :artist_id)
+    params.require(:album).permit(:title, :artist_id, songs_attributes: [:title])
   end
 
   def set_album 

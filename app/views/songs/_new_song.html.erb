@@ -1,0 +1,6 @@
+<%= form_for song do |f| %>
+    <%= f.hidden_field :album_id, value: album_id %><br>
+    <%= f.label :title, 'Title:' %><br>
+    <%= f.text_field :title %><br>
+    <%= f.submit %>
+<% end %>
