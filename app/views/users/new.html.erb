@@ -1,6 +1,6 @@
 <h1>Sign Up!</h1>
 
 <%= render 'notice' %>
-<%= render 'form', url: signup_path, user: @user %>
+<%= render 'form', url: signup_path, user: User.new %>
 <p>Sign up with:</p>
 <%= render 'social' %>
