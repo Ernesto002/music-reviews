@@ -28,9 +28,13 @@ Rails.application.routes.draw do
   #media
   resources :media, only: %i[show]
   resources :genres, only: %i[index new create show]
-  resources :artist, only: %i[index new create show]
-  resources :albums, only: %i[new create show]
-  resources :songs, only: %i[new create show]
+  resources :artist, only %i[index new create show] do 
+    resources :albums, only: %i[new] do 
+      resources :songs, only: %i[new]
+    end
+  end
+  resources :albums, only: %i[create show]
+  resources :songs, only: %i[create show]
 
   #sessions  
   get '/login/' => 'sessions#new'

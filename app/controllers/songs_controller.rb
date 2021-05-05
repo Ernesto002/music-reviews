@@ -5,9 +5,10 @@ class SongsController < ApplicationController
   end
 
   def create
-    song = Song.create(song_params)
-    return redirect_back(fallback_location: new_song_path), notice: song.errors unless song.errors.blank?
-    redirect_to song_path(song)
+    unless song.errors.blank?
+      album = Album.find_by(id: params[:song][:album_id])
+      return redirect_back(fallback_location: new_artist_album_song_path(artist_id: album.parent.id, album_id: album.id)), notice: song.errors
+    end
   end
 
   def show 

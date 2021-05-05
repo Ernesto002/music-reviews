@@ -24,9 +24,9 @@
 <% unless medium.class.name == 'Genre' || medium.class.name == 'Song' %>
     <%= render 'media/children', medium: medium %>
     <% if medium.class.name == 'Artist' %>
-        <%= render '/media/prompt_ne', medium_name: 'Album', new_path: new_album_path %>
+        <%= render '/media/prompt_new', medium_name: 'Album', new_path: new_artist_album_path(artist_id: medium.id) %>
     <% else %>
-        <%= render '/media/prompt_new', medium_name: 'Song', new_path: new_song_path
+        <%= render '/media/prompt_new', medium_name: 'Song', new_path: new_artist_album_song_path(artist_id: medium.parent.id, album_id: medium.id) %>
     <% end %>
 <% end %>
 

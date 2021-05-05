@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
 
   def create
     album = Album.create(album_params)
-    return redirect_back(fallback_location: new_album_path), notice: album.errors unless album.errors.blank?
+    return redirect_back(fallback_location: new_artist_album_path(params[:album][:artist_id])), notice: album.errors unless album.errors.blank?
     redirect_to album_path(album)
   end
 
