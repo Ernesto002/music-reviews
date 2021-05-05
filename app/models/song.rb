@@ -6,4 +6,6 @@ class Song < ApplicationRecord
     before_validation :build_parent
     validates :album, presence:true
     validates :title, presence: true
+    scope :in_album, ->(album_id) { where (album_id: album_id) }
+    scope :in_artist, ->(artist_id) { joins(:album).joins('LEFT JOIN artist ON albums.album_id = artitst.di').where('artist.id = ?', artist_id) }
 end

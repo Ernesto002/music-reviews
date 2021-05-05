@@ -7,6 +7,7 @@ class Album < ApplicationRecord
     before_validation :build_parent
     validates :artist, presence: true
     validates :title, presence: true
+    scope :in_artist, ->(artist_id) { where(artist_id: artist_id) }
 
     def title 
         "#{artist.name} - Album #{title}"
