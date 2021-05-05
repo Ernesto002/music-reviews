@@ -26,7 +26,7 @@ class FavoritesController
     private 
 
     def favorite_params 
-        params.require(:favorite)
+        params.require(:favorite).permit(:medium_id, :user_id)
     end
 
     def require_owner 

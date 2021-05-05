@@ -11,6 +11,9 @@
 <% end %>
 
 <% if logged_in? %>
+    <% unless current_user.favorites.any? { |favorite| favorite.medium_id == medium.medium_id } %>
+        <%= render 'favorites/new_favorite', favorite: Favorite.new, medium_id: medium.medium_id %>
+    <% end %>
     <h4>Review this <%= medium.medium.medium)type %>!</h4>
     <%= render 'notice' %>
     <%= render 'reviews/form', review: Review.new, medium_id: medium.medium_id %>
