@@ -10,20 +10,21 @@ class SongsController < ApplicationController
     song.album = album
     song.save
     unless song.errors.blank?
-      return redirect_back(fallback_location: album_path(params[:song][:album_id])), notice: song.errors
+      return redirect_back fallback_location: album_path(params[:song][:album_id]), notice: song.errors 
     end
+    redirect_to song_path(song)
   end
 
-  def show 
+  def show
   end
 
-  private 
+  private
 
-  def song_params 
+  def song_params
     params.require(:song).permit(:title)
   end
 
-  def set_song 
+  def set_song
     id = params[:song_id] || params[:id]
     @song = Song.find_by(id: id)
     return redirect_to new_song_path unless @song

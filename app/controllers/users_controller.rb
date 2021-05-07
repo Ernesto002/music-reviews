@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, only: %i[update]
-  before_action only: %i[show update] do 
+  before_action only: %i[show update] do
     set_user(params[:id])
   end
 
@@ -9,11 +9,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_back(fallback_location: root_path) unless @user
+    redirect_back fallback_location: root_path unless @user
   end
 
-  def update 
-    return redirect_back(fallback_location: root_path), notice: 'You must be logged in as the correct user' unless current_user == @user
+  def update
+    return redirect_back fallback_location: root_path, notice: 'You must be logged in as the correct user.' unless current_user == @user
     current_user.update(user_params)
     redirect_to user_path(current_user)
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params 
+  def user_params
     params.require(:user).permit(:username, :email, :password)
   end
 end

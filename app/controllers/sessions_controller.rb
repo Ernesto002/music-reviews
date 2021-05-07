@@ -9,25 +9,23 @@ class SessionsController < ApplicationController
       self.current_user = user
       return redirect_to user_path(user)
     end
-    redirect_to login_path, notice: 'Invalid login attempt'
+    redirect_to login_path, notice: 'Invalid login attempt.'
   end
 
   def omni_create
     identity = Identity.find_or_create_with_omniauth(auth)
     if logged_in?
-      if identity.user == current_user 
+      if identity.user == current_user
         redirect_to root_path, notice: 'Identity already exists.'
-      # elsif identity.user 
-        # notice to merge accounts
       else
-        indentity.user = current_user
-        identity.save 
+        identity.user = current_user
+        identity.save
         redirect_to root_path, notice: 'Identity linked!'
       end
     else
       if identity.user
-        self.current_user = identity.user 
-      else 
+        self.current_user = identity.user
+      else
         user = User.create_with_omni(auth, identity)
         self.current_user = user
       end
@@ -37,7 +35,7 @@ class SessionsController < ApplicationController
 
   def destroy
     self.current_user = nil
-    redirect_to root_path, notice: 'Signed out'
+    redirect_to root_path, notice: 'Signed out.'
   end
 
   private
