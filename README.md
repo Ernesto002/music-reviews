@@ -1,24 +1,37 @@
-# README
+# Rails Model Associations
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a Music Review web-app with User sign up, authentication, and third party signup/login options.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Clone this repository and install all necessary gems
 
-* System dependencies
+```bash
+$ git clone git@github.com:Ernesto002/music-reviews.git
+$ bundle install
+```
 
-* Configuration
+## Database
 
-* Database creation
+To migrate and seed db run:
 
-* Database initialization
+```bash
+$ rake db:migrate
+$ rake db:seed
+```
 
-* How to run the test suite
+## Run app
 
-* Services (job queues, cache servers, search engines, etc.)
+In order to launch serber run the following in your terminal:
 
-* Deployment instructions
+```bash
+$ rails s
+```
 
-* ...
+Then in your browser search:
+
+```bash
+localhost:3000
+```
+
+In order to view the site
