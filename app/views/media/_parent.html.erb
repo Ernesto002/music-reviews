@@ -1,7 +1,7 @@
 <% if medium.try(:parent) %>
   <hr>
     <div id='medium_parent_<%=medium.parent.id%>'>
-      A member of <%= medium.parent.class.name %>: <%= link_to medium.parent.title, medium_path(medium.parent.medium_id) %>      
+      Belongs to this <%= medium.parent.class.name %>: <%= link_to medium.parent.title, medium_path(medium.parent.medium_id) %>      
     </div>
   <hr>
 <% end %>

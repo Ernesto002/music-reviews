@@ -4,9 +4,9 @@
   <%= f.hidden_field :artist_id, value: params[:artist_id] %><br>
   <%= f.label :title, 'Album Title:' %><br>
   <%= f.text_field :title %><br>
-  <%= f.fields_for :songs do |song| %>
+  <%= f.fields_for :songs do |song| %><br>
     <%= song.label :title, 'Add a Song title!' %><br>
     <%= song.text_field :title %><br>
-  <% end %>
+  <% end %><br>
   <%= f.submit %>
 <% end %>
