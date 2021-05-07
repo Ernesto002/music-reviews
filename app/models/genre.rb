@@ -1,8 +1,8 @@
 class Genre < ApplicationRecord
     include Usable
-    include Reviewable
     include Favoritable
-    before_validation :build_parent
+    include Reviewable
+    before_validation :build_parents
     validates :medium, presence: true, uniqueness: true
-    validates :title, presence: true
+    validates :name, presence: true
 end
