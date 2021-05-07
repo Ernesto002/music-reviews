@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :sessions, only: %i[create]
 
   #Omniauth
-  get '/auth/:provider/callback' => 'sessions#omni_create'
+  get '/auth/:provider/callback' => 'sessions#omniauth'
 
   #Fallback
   get '*path' => redirect('/')

@@ -128,8 +128,9 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
       rack-protection
-    omniauth-facebook (8.0.0)
-      omniauth-oauth2 (~> 1.2)
+    omniauth-github (2.0.0)
+      omniauth (~> 2.0)
+      omniauth-oauth2 (~> 1.7.1)
     omniauth-google-oauth2 (1.0.0)
       jwt (>= 2.0)
       oauth2 (~> 1.1)
@@ -141,6 +142,9 @@ GEM
     omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
@@ -259,8 +263,9 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.7)
   omniauth
-  omniauth-facebook
+  omniauth-github
   omniauth-google-oauth2
+  omniauth-rails_csrf_protection
   omniauth-twitter
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.6)

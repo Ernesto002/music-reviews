@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     redirect_to login_path, notice: 'Invalid login attempt.'
   end
 
-  def omni_create
+  def omniauth
     identity = Identity.find_or_create_with_omniauth(auth)
     if logged_in?
       if identity.user == current_user
