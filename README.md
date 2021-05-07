@@ -13,7 +13,7 @@ $ bundle install
 
 ## Database
 
-To migrate and seed db run:
+To migrate and seed db run the following in your terminal:
 
 ```bash
 $ rake db:migrate
