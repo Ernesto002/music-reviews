@@ -1,7 +1,7 @@
-<h1>Here are some <%= media.first.medium.medium_type.pluralize %>!</h1>
-<ul style='columns: 4'>
-    <% media.each do |medium| %>
-        <li><%= link_to medium.title, medium_path(medium.medium) %></li>
-    <% end %>
+<h1>Here are some <%= media.first.medium.medium_type.pluralize %>!</h1> 
+ <ul style='columns: 4'>
+  <% media.each do |medium| %>
+    <li><%= link_to medium.title, medium_path(medium.medium) %></li>
+  <% end %>
 </ul>
 <%= render '/media/prompt_new', medium_name: media.first.class.name, new_path: new_path %>

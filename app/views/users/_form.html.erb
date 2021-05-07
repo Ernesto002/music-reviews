@@ -1,9 +1,9 @@
-<%= form_for user, url: '/login' do |f| %>
-    <%= f.label :username, 'User Name:' %><br>
-    <%= f.text_field :username %><br>
-    <%= f.label :email, 'Email:' %><br>
-    <%= f.text_field :email %><br>
-    <%= f.label :password, 'Password:' %><br>
-    <%= f.password_field :password %><br>
-    <%= f.submit 'Sign Up!'%>
-  <% end %>
+<%= form_for user do |f| %>  
+  <%= f.label :username, 'User Name:' %><br>
+  <%= f.text_field :username %><br>
+  <%= f.label :email, 'Email:' %><br>
+  <%= f.text_field :email %><br>
+  <%= f.label :password, 'Password:' %><br>
+  <%= f.password_field :password %><br>
+  <%= f.submit %>
+<% end %>

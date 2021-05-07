@@ -1,11 +1,11 @@
 <% if notice %>
-    <ul id="notice">
-        <% if notice.instance_of?(Hash) %>
-            <% notice.keys.each do |key| %>
-                <li><%= "#{key}: #{notice[key][0]}" %></li>
-            <% end %>
-        <% else %>
-            <%= notice %>
-        <% end %>
-    </ul>
+  <ul id="notice">
+    <% if notice.instance_of?(Hash) %>
+      <% notice.keys.each do |key| %>
+        <li><%= "#{key}: #{notice[key][0]}" %></li>
+      <% end %>  
+    <% else %>
+      <%= notice %>
+    <% end %>
+  </ul>
 <% end %>

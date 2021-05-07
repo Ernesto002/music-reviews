@@ -1,13 +1,13 @@
 <h1>Reviews by <%= @user.username %></h1>
-<% unless @reviews.empty? %> 
-    <% @reviews.each do |review| %>
-        <h4><%= link_to review.medium.element.title, medium_path(review.medium) %> - <%= review.rating %>/5</h4>
-        <p><%= review.content %></p> 
-        <% if @user == current_user %>
-            <%= render 'owner_actions', review: review %>
-        <% end %>
-        <hr>
+<% unless @reviews.empty? %>
+   <% @reviews.each do |review| %>
+    <h4><%= link_to review.medium.element.title, medium_path(review.medium) %> - <%= review.rating %>/5</h4>
+    <p><%= review.content %></p>    
+    <% if @user == current_user %>
+      <%= render 'owner_actions', review: review %>      
     <% end %>
+    <hr>
+  <% end %> 
 <% else %>
   <p><%= @user.username %> has no reviews</p>
-<% end %>
+<% end %> 

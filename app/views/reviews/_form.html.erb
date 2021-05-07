@@ -1,6 +1,6 @@
 <%= form_for review do |f| %>
-    <%= f.hidden_field :medium_id, value: medium_id %><br>
-    <%= f.hidden_field :user_id, value: current_user.id %><br>
+    <%= f.hidden_field :medium_id, value: medium_id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.label :content, 'Content:' %><br>
     <%= f.text_field :content %><br>
     <%= f.label :rating, 'rating:' %><br>

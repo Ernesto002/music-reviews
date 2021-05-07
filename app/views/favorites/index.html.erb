@@ -1,19 +1,18 @@
-<h1>Favorites by <%= @user.username %></h1> 
-
-<% unless @favorites.empty? %> 
-    <% @favorites.each do |favorite| %>
-        <h4><%= link_to favorite.medium.element.title, medium_path(favorite.medium) %></h4>
-        <p>Favorited on: <%= favorite.created_at %></p>
-
-        <% if @user == current_user %> 
-            <div class='current_user_actions_favorite_<%= favorite.id %>'>
-                <%= form_tag favorite_path(favorite), method: 'delete' do %> 
-                    <%= submit_tag 'Delete favorite' %>
-                <% end %>
-            </div>
+<h1>Favorites by <%= @user.username %></h1>
+<% unless @favorites.empty? %>
+   <% @favorites.each do |favorite| %>
+    <h4><%= link_to favorite.medium.element.title, medium_path(favorite.medium) %></h4>
+    <p>Favorited on: <%= favorite.created_at %></p>
+    
+    <% if @user == current_user %>
+      <div class='current_user_actions_favorite_<%= favorite.id %>'>    
+        <%= form_tag favorite_path(favorite), method: 'delete' do %>
+          <%= submit_tag 'Delete favorite' %>
         <% end %>
-        <hr>
+      </div>
     <% end %>
+    <hr>
+  <% end %> 
 <% else %>
   <p><%= @user.username %> has no favorites</p>
-<% end %>
+<% end %> 

@@ -1,12 +1,12 @@
 <h1>Add a Album!</h1>
 <%= render 'notice' %>
 <%= form_for @album do |f| %>
-    <%= f.hidden_field :artist_id, value: params[:artist_id] %><br>
-    <%= f.label :title, 'Title:' %><br>
-    <%= f.text_field :title %><br>
-    <%= f.fields_for :songs do |song| %>
-        <%= song.label :title, 'Add a Song title!' %><br>
-        <%= song.text_field :title %><br>
-    <% end %>
-    <%= f.submit %>
+  <%= f.hidden_field :artist_id, value: params[:artist_id] %><br>
+  <%= f.label :title, 'Album Title:' %><br>
+  <%= f.text_field :title %><br>
+  <%= f.fields_for :songs do |song| %>
+    <%= song.label :title, 'Add a Song title!' %><br>
+    <%= song.text_field :title %><br>
+  <% end %>
+  <%= f.submit %>
 <% end %>

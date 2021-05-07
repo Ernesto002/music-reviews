@@ -1,33 +1,34 @@
 <h1><%= medium.title %></h1>
 
 <% unless medium.reviews.empty? %>
-    <% medium.reviews.each do |review| %>
-        <p><%= review.content %> by <%= link_to review.reviewer.username, user_path(review.reviewer) %></p>
-        <%= render 'reviews/owner_actions', review: review %>
-        <hr>
-    <% end %>
+   <% medium.reviews.each do |review| %>
+    <p><%= review.content %> by <%= link_to review.reviewer.username, user_path(review.reviewer) %></p>
+    <%= render 'reviews/owner_actions', review: review %>
+    <hr>
+  <% end %> 
 <% else %>
-    <p><%= medium.title %> has no reviews!</p>
+  <p><%= medium.title %> has no reviews!</p>
 <% end %>
 
 <% if logged_in? %>
-    <% unless current_user.favorites.any? { |favorite| favorite.medium_id == medium.medium_id } %>
-        <%= render 'favorites/new_favorite', favorite: Favorite.new, medium_id: medium.medium_id %>
-    <% end %>
-    <h4>Review this <%= medium.medium.medium)type %>!</h4>
-    <%= render 'notice' %>
-    <%= render 'reviews/form', review: Review.new, medium_id: medium.medium_id %>
+  <% unless current_user.favorites.any? { |favorite| favorite.medium_id == medium.medium_id } %>
+    <%= render 'favorites/new_favorite', favorite: Favorite.new, medium_id: medium.medium_id %>
+  <% end %>
+  
+  <h4>Review this <%= medium.medium.medium_type %>!</h4>
+  <%= render 'notice' %>
+  <%= render 'reviews/form', review: Review.new, medium_id: medium.medium_id %>
 <% else %>
-    <p>Log in to add a review!</p>
+  <p>Log in to add a review!</p>
 <% end %>
 
 <% unless medium.class.name == 'Genre' || medium.class.name == 'Song' %>
-    <%= render 'media/children', medium: medium %>
-    <% if medium.class.name == 'Artist' %>
-        <%= render '/media/prompt_new', medium_name: 'Album', new_path: new_artist_album_path(artist_id: medium.id) %>
-    <% else %>
-        <%= render '/media/prompt_new', medium_name: 'Song', new_path: new_artist_album_song_path(artist_id: medium.parent.id, album_id: medium.id) %>
-    <% end %>
+  <%= render 'media/children', medium: medium %>
+  <% if medium.class.name == 'Artist' %>
+    <%= render '/media/prompt_new', medium_name: 'Album', new_path: new_artist_album_path(artist_id: medium.id) %>
+  <% else %>
+    <%= render '/media/prompt_new', medium_name: 'Song', new_path: new_artist_album_song_path(artist_id: medium.parent.id, album_id: medium.id) %>
+  <% end %>
 <% end %>
 
-<%= render 'media/parent', medium: medium
+<%= render 'media/parent', medium: medium %>
