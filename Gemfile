@@ -26,6 +26,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+gem 'rubocop', '~> 0.39.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
