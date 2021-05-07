@@ -1,32 +1,32 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do  
   root 'static#home'
 
-  #User
+  #Users
   get '/signup' => 'users#new'
   resources :users, only: %i[show update create] do 
-    resources :reviews, only: %i[index]
+    resources :reviews, only: %i[index] 
     resources :favorites, only: %i[index]
   end
   resources :reviews, only: %i[create edit update destroy]
-  resources :favorites, only:  %i[create destroy]
+  resources :favorites, only: %i[create destroy]
 
   #Media
-  resources :media, only: %i[show]
+  resources :media, only: %i[show] 
   resources :genres, only: %i[index new create show]
-  resources :artist, only: %i[index new create show] do 
-    resources :albums, only: %i[new] do 
+  resources :artist, only: %i[index new create show] do
+    resources :albums, only: %i[new] do
       resources :songs, only: %i[new]
     end
   end
   resources :albums, only: %i[create show]
   resources :songs, only: %i[create show]
 
-  #Sessions 
+  #Sessions
   get '/login' => 'sessions#new'
   post '/logout' => 'sessions#destroy'
-  resources :sessions ,only: %i[create]
+  resources :sessions, only: %i[create]
 
-  #Omniauth 
+  #Omniauth
   get '/auth/:provider/callback' => 'sessions#omni_create'
 
   #Fallback
