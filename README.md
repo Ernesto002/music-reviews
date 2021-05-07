@@ -35,3 +35,11 @@ localhost:3000
 ```
 
 In order to view the site
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/Ernesto002/music-reviews. This project is intended to be a safe, welcoming space for collaboration, and contributers are expected to adhere to the [Code of Conduct](https://github.com/Ernesto002/music-reviews/blob/master/CODE_OF_CONDUCT.MD).
+
+## License 
+
+This code is available for the general public under this [LICENSE](https://github.com/Ernesto002/music-reviews/blob/master/LICENSE.md).
