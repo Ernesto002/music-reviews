@@ -12,8 +12,7 @@ Rails.application.routes.draw do
 
   #Media
   resources :media, only: %i[show] 
-  resources :genres, only: %i[index new create show]
-  resources :artist, only: %i[index new create show] do
+  resources :artists, only: %i[index new create show] do
     resources :albums, only: %i[new] do
       resources :songs, only: %i[new]
     end

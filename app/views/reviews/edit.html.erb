@@ -1,3 +1,3 @@
-<h1>Edit review for <%= link_to @review.medium.element.title, medium_path(@review.medium) %></h1>
+<h1>Edit review for <%= link_to @review.medium.element.name, medium_path(@review.medium) %></h1>
 <%= render 'notice' %>
 <%= render 'form', review: @review, medium_id: @review.medium_id %>

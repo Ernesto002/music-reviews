@@ -14,7 +14,7 @@
   <% unless current_user.favorites.any? { |favorite| favorite.medium_id == medium.medium_id } %>
     <%= render 'favorites/new_favorite', favorite: Favorite.new, medium_id: medium.medium_id %>
   <% end %>
-  
+
   <h4>Review this <%= medium.medium.medium_type %>!</h4>
   <%= render 'notice' %>
   <%= render 'reviews/form', review: Review.new, medium_id: medium.medium_id %>
@@ -22,7 +22,7 @@
   <p>Log in to add a review!</p>
 <% end %>
 
-<% unless medium.class.name == 'Genre' || medium.class.name == 'Song' %>
+<% unless medium.class.name == 'Song' %>
   <%= render 'media/children', medium: medium %>
   <% if medium.class.name == 'Artist' %>
     <%= render '/media/prompt_new', medium_name: 'Album', new_path: new_artist_album_path(artist_id: medium.id) %>

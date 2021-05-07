@@ -1,8 +1,8 @@
 <% if review.reviewer == current_user %>
-    <div class='current_user_actions_review_<%= review.id %>'>
-        <%= link_to "Edit Review", edit_review_path(review) %>
-        <%= form_tag review_path(review), method: 'delete' do %>
-          <%= submit_tag 'Delete Review' %>
-        <% end %>
-    </div>
+  <div class='current_user_actions_review_<%= review.id %>'>
+    <%= link_to "Edit Review", edit_review_path(review) %>
+    <%= form_tag review_path(review), method: 'delete' do %>
+      <%= submit_tag 'Delete Review' %>
+    <% end %>
+  </div>
 <% end %>

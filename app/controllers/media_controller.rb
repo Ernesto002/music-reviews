@@ -6,8 +6,6 @@ class MediaController < ApplicationController
   
     def show
       case @medium.medium_type.downcase
-      when 'genre'
-        redirect_to genre_path(@medium.element)
       when 'artist'
         redirect_to artist_path(@medium.element)
       when 'album'
