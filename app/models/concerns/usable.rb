@@ -1,4 +1,4 @@
-module Conceivable
+module Usable
   def self.included(base)
     base.class_eval do
       belongs_to :medium
