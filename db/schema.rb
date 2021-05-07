@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_05_02_033206) do
   end
 
   create_table "artists", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.integer "medium_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,14 +37,6 @@ ActiveRecord::Schema.define(version: 2021_05_02_033206) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["medium_id"], name: "index_favorites_on_medium_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
-  end
-
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.integer "medium_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["medium_id"], name: "index_genres_on_medium_id"
   end
 
   create_table "identities", force: :cascade do |t|
@@ -96,7 +88,6 @@ ActiveRecord::Schema.define(version: 2021_05_02_033206) do
   add_foreign_key "artists", "media"
   add_foreign_key "favorites", "media"
   add_foreign_key "favorites", "users"
-  add_foreign_key "genres", "media"
   add_foreign_key "identities", "users"
   add_foreign_key "reviews", "media"
   add_foreign_key "reviews", "users"
