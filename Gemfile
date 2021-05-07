@@ -27,6 +27,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'rubocop', '~> 0.39.0'
+gem 'faker' 
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
