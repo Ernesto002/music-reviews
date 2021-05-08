@@ -20,6 +20,18 @@ $ rake db:migrate
 $ rake db:seed
 ```
 
+## Omniauth
+
+In order to use Omniauth within this app you will need to get a Google client ID, as well has Google clinet secret key.
+You will also need a GitHub client ID, as well as GitHub client secret ID.
+
+Inside your .env file set these varaiables equal to your associated client ID's and secrets:
+
+```bash 
+GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
+GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
+```
+
 ## Run app
 
 In order to launch serber run the following in your terminal:
