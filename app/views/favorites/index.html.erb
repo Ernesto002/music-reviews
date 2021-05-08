@@ -2,7 +2,6 @@
 <% unless @favorites.empty? %>
    <% @favorites.each do |favorite| %>
     <h4><%= link_to favorite.medium.element.title, medium_path(favorite.medium) %></h4>
-    <p>Favorited on: <%= favorite.created_at %></p>
     
     <% if @user == current_user %>
       <div class='current_user_actions_favorite_<%= favorite.id %>'>    
