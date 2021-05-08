@@ -8,6 +8,8 @@ class Artist < ApplicationRecord
     validates :medium, presence: true, uniqueness: true
     validates :title, presence: true
     validates_uniqueness_of :title
+
+    scope :alphabetical, -> {order('title')}
   
     def children
       albums.blank? ? nil : albums

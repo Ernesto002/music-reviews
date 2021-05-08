@@ -10,11 +10,6 @@ class Album < ApplicationRecord
   validates :artist, presence: true
   validates :title, presence: true
   validates_uniqueness_of :title, scope: :artist
-  scope :in_artist, ->(artist_id) { where(artist_id: artist_id) }
-
-  # def title
-  #   "#{artist.name} - Album #{title}" if artist
-  # end
 
   def children
     songs.blank? ? nil : songs

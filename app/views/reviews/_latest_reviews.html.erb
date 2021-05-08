@@ -1,0 +1,4 @@
+<h1>Latest Reviews</h1>
+<% @reviews.each do |review| %>
+    <li><%= review.reviewer.username %> rated<%= link_to "#{review.medium.element.title}", medium_path(review.medium) %> a <%= review.rating %>/5</li>
+<% end %>

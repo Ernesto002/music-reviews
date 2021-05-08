@@ -2,7 +2,8 @@ class ArtistsController < ApplicationController
   before_action :set_artist, only: %i[show]
 
   def index
-    @artist = Artist.all
+    @artist = Artist.alphabetical
+    @reviews = Review.latest_reviews
   end
 
   def new
