@@ -7,6 +7,7 @@ class Artist < ApplicationRecord
     before_validation :build_parents
     validates :medium, presence: true, uniqueness: true
     validates :title, presence: true
+    validates_uniqueness_of :title
   
     def children
       albums.blank? ? nil : albums
