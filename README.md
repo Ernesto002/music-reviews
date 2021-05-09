@@ -13,11 +13,10 @@ $ bundle install
 
 ## Database
 
-To migrate and seed db run the following in your terminal:
+To migrate the database run the following in your terminal:
 
 ```bash
 $ rake db:migrate
-$ rake db:seed
 ```
 
 ## Omniauth
