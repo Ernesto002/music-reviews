@@ -1,6 +1,8 @@
 # Rails Model Associations
 
 This project is a Music Review web-app with User sign up, authentication, and third party signup/login options.
+![rails](https://user-images.githubusercontent.com/73979053/117595830-b3ce0980-b0f6-11eb-84b0-b7ef118a01c1.jpg)
+
 
 ## Installation
 
